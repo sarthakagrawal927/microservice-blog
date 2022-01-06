@@ -1,9 +1,11 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const bodyParser = require("body-parser");
 const { randomBytes } = require("crypto");
 
 app.use(bodyParser.json());
+app.use(cors());
 
 const posts = {};
 
@@ -18,10 +20,9 @@ app.post("/posts", (req, res) => {
     id,
     title,
   };
-  posts.append(newPost);
   res.status(201).send(posts[id]);
 });
 
 app.listen(4000, () => {
-  console.log("Listening on 4k");
+  console.log("Posts Listening on 4k");
 });
