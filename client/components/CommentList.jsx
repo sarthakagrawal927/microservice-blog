@@ -7,7 +7,10 @@ const PostList = ({ postId, comments }) => {
       <div className='row'>
         {comments &&
           comments.map((comment, index) => {
-            return <p key={index}>{comment.content}</p>;
+            let content = comment.content;
+            if (comment.status === "pending") content = "Awaiting Moderation";
+            if (comment.status === "rejected") content = "Comment rejected";
+            return <p key={index}>{content}</p>;
           })}
       </div>
     </div>

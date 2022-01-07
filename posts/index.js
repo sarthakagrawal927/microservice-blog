@@ -36,5 +36,5 @@ app.post("/events", async (req, res) => {
 });
 
 app.listen(4000, () => {
-  console.log("Posts Listening on 4k");
+  console.log("Posts Listening on 4000");
 });
