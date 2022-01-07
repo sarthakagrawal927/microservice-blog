@@ -5,9 +5,7 @@ import Post from "./Post";
 const PostList = () => {
   const [posts, setPosts] = useState({});
   const fetchPosts = async () => {
-    const res = await axios.get("http://localhost:4000/posts");
-
-    console.log(res.data);
+    const res = await axios.get("http://localhost:4002/posts");
     setPosts(res.data);
   };
 
@@ -20,7 +18,14 @@ const PostList = () => {
       <div className='row'>
         {posts &&
           Object.values(posts).map((post, index) => {
-            return <Post id={post.id} title={post.title} key={index} />;
+            return (
+              <Post
+                id={post.id}
+                title={post.title}
+                key={index}
+                comments={post.comments}
+              />
+            );
           })}
       </div>
     </div>
